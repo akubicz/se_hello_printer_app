@@ -11,8 +11,12 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
   # aktywowanie hermetycznego środowiska
   $ source .venv/bin/activate
-  $ pip install -r requirements.txt
-  $ pip install -r test_requirements.txt
+  
+  # instalacja requirements
+  $ make deps
+  
+  # $ pip install -r requirements.txt
+  # $ pip install -r test_requirements.txt
 
   # zobacz
   $ pip list
@@ -21,20 +25,20 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   Sprawdź: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
 
 - Uruchamianie applikacji:
-
+  $ make run
+  
   ```
   # jako zwykły program
-  $ python main.py
-
+  # $ python main.py
   # albo:
-  $ PYTHONPATH=. FLASK_APP=hello_world flask run
+  # $ PYTHONPATH=. FLASK_APP=hello_world flask run
   ```
 
 - Uruchamianie testów (see: http://doc.pytest.org/en/latest/capture.html):
-
+  $ make test
   ```
-  $ PYTHONPATH=. py.test
-  $ PYTHONPATH=. py.test --verbose -s
+  # $ PYTHONPATH=. py.test
+  # $ PYTHONPATH=. py.test --verbose -s
   ```
 
 - Kontynuując pracę z projektem, aktywowanie hermetycznego środowiska dla aplikacji py:
