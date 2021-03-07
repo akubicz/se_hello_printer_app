@@ -8,7 +8,6 @@ XML = "xml"
 SUPPORTED = [PLAIN, PLAIN_UP, PLAIN_LO, JSON, XML]
 
 
-
 def get_formatted(msg, imie, format):
     result = ""
     if format == PLAIN:
@@ -25,15 +24,15 @@ def get_formatted(msg, imie, format):
 
 
 def format_to_json(msg, imie):
-   return ('{ "imie":"' + imie + '", "msg":"' +
+    return ('{ "imie":"' + imie + '", "msg":"' +
             msg + '"}')
 
 
 def format_to_XML(msg, imie):
     return ("<greetings>" +
-                "<name>"  + imie + "</name>" +
-                "<msg>" + msg + "</msg>" +
-              "</greetings>")
+            "<name>" + imie + "</name>" +
+            "<msg>" + msg + "</msg>" +
+            "</greetings>")
 
 
 def plain_text(msg, imie):

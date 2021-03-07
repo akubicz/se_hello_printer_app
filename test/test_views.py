@@ -19,12 +19,18 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_xml_with_output(self):
         rv = self.app.get('/?output=xml')
-        self.assertEqual(b'<greetings><name>Ania</name><msg>Hello World!</msg></greetings>', rv.data)
+        expected = ("<greetings><name>Ania</name>"
+                    "<msg>Hello World!"
+                    "</msg></greetings>")
+        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)
 
     def test_name_xml_with_output(self):
         rv = self.app.get('/?name=apolonia&output=xml')
-        self.assertEqual(b'<greetings><name>apolonia</name><msg>Hello World!</msg></greetings>', rv.data)
+        expected = ("<greetings><name>apolonia</name>"
+                    "<msg>Hello World!</msg></greetings>")
+        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)
 
     def test_name_json_with_output(self):
         rv = self.app.get('/?name=apolonia&output=json')
-        self.assertEqual(b'{ "imie":"apolonia", "msg":"Hello World!"}', rv.data)
+        expected = ('{ "imie":"apolonia", "msg":"Hello World!"}')
+        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)

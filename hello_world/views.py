@@ -15,10 +15,10 @@ def index():
         output = PLAIN
     if name is None:
         return get_formatted(msg, moje_imie,
-                         output.lower())
+                             output.lower())
     else:
         return get_formatted(msg, name,
-                         output.lower())
+                             output.lower())
 
 
 @app.route('/outputs')
