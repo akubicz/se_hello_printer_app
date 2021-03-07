@@ -5,16 +5,17 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
 - W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
 
+  # == TWORZENIE WIRTUALNEGO SRODOWISKA ==
   ```
   # tworzymy hermetyczne środowisko dla bibliotek aplikacji:
   $ python3 -m venv .venv
 
   # aktywowanie hermetycznego środowiska
   $ source .venv/bin/activate
-  
+
   # instalacja requirements
   $ make deps
-  
+
   # $ pip install -r requirements.txt
   # $ pip install -r test_requirements.txt
 
@@ -24,9 +25,12 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
   Sprawdź: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
 
+
+  # == URUCHAMIANIE APLIKACJI==
+
 - Uruchamianie applikacji:
   $ make run
-  
+
   ```
   # jako zwykły program
   # $ python main.py
@@ -51,14 +55,23 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   ```
   ...
 
-  # aktywacja 
+  # aktywacja
   $ source .venv/bin/activate
   ```
+
+  == INTEGRACJA Z TRAVIS CI
 
 - Integracja z TravisCI:
 
   ```
-  # miejsce na twoje notatki
+  # dodaj do repozytorium plik .travis.yml
+  #language: python
+python:
+- "3.6"
+install:
+- make deps
+script:
+- make test
   ```
 
 # Pomocnicze
