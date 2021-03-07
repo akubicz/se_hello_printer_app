@@ -28,9 +28,12 @@ docker_run: docker_build
 
 USERNAME=aniatest1
 TAG=$(USERNAME)/hello-world-printer
+TAG_VERSION=0.0.1
 
 docker_push: docker_build
+	if [ -z "${TAG_VERSION}" ]; then \
 		@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
-		docker tag hello-world-printer $(TAG); \
-		docker push $(TAG); \
-		docker logout;
+		docker tag hello-world-printer $(TAG):$(TAG_VERSION); \
+		docker push $(TAG):$(TAG_VERSION); \
+	fi;
+	docker logout;
