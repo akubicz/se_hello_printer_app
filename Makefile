@@ -13,6 +13,10 @@ lint:
 run:
 	PYTHONPATH=. FLASK_APP=hello_world flask run
 
+test_smoke:
+	curl --fail 127.0.0.1:5000
+
+
 docker_build:
 	docker build -t hello-world-printer .
 
@@ -24,7 +28,6 @@ docker_run: docker_build
 
 USERNAME=aniatest1
 TAG=$(USERNAME)/hello-world-printer
-
 
 docker_push: docker_build
 		@docker login --username $(USERNAME) --password $${DOCKER_PASSWORD}; \
