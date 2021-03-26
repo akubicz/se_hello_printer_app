@@ -5,32 +5,32 @@ from hello_world.formater import SUPPORTED
 
 class FlaskrTestCase(unittest.TestCase):
     def setUp(self):
-        app.config['TESTING'] = True
+        app.config["TESTING"] = True
         self.app = app.test_client()
 
     def test_outputs(self):
-        rv = self.app.get('/outputs')
+        rv = self.app.get("/outputs")
         s = str(rv.data)
-        ','.join(SUPPORTED) in s
+        ",".join(SUPPORTED) in s
 
     def test_msg_with_output(self):
-        rv = self.app.get('/?output=json')
+        rv = self.app.get("/?output=json")
         self.assertEqual(b'{ "imie":"Ania", "msg":"Hello World!"}', rv.data)
 
     def test_xml_with_output(self):
-        rv = self.app.get('/?output=xml')
-        expected = ("<greetings><name>Ania</name>"
-                    "<msg>Hello World!"
-                    "</msg></greetings>")
-        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)
+        rv = self.app.get("/?output=xml")
+        expected = "<greetings><name>Ania</name>" "<msg>Hello World!"
+        expected += "</msg></greetings>"
+
+        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
 
     def test_name_xml_with_output(self):
-        rv = self.app.get('/?name=apolonia&output=xml')
-        expected = ("<greetings><name>apolonia</name>"
-                    "<msg>Hello World!</msg></greetings>")
-        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)
+        rv = self.app.get("/?name=apolonia&output=xml")
+        expected = "<greetings><name>apolonia</name>"
+        expected += "<msg>Hello World!</msg></greetings>"
+        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
 
     def test_name_json_with_output(self):
-        rv = self.app.get('/?name=apolonia&output=json')
-        expected = ('{ "imie":"apolonia", "msg":"Hello World!"}')
-        self.assertEqual(bytes(expected, encoding='utf-8'), rv.data)
+        rv = self.app.get("/?name=apolonia&output=json")
+        expected = '{ "imie":"apolonia", "msg":"Hello World!"}'
+        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
