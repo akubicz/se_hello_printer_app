@@ -1,8 +1,9 @@
-# Simple Flask App
+# Simple Flask App [![Build Status](https://travis-ci.org/akubicz/se_hello_printer_app.svg?branch=master)](https://travis-ci.org/akubicz/se_hello_printer_app)
 
 Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
+Aplikacja
 - W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
 
   # == TWORZENIE WIRTUALNEGO SRODOWISKA ==
@@ -46,7 +47,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   ```
 
 - Kontynuując pracę z projektem, aktywowanie hermetycznego środowiska dla aplikacji py:
-
+m
   ```
   # deaktywacja
   $ deactivate
