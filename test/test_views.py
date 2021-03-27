@@ -22,15 +22,15 @@ class FlaskrTestCase(unittest.TestCase):
         expected = "<greetings><name>Anna</name>" "<msg>Hello World!"
         expected += "</msg></greetings>"
 
-        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
+        self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
 
     def test_name_xml_with_output(self):
         rv = self.app.get("/?name=apolonia&output=xml")
         expected = "<greetings><name>apolonia</name>"
         expected += "<msg>Hello World!</msg></greetings>"
-        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
+        self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
 
     def test_name_json_with_output(self):
         rv = self.app.get("/?name=apolonia&output=json")
         expected = '{ "imie":"apolonia", "msg":"Hello World!"}'
-        self.assertEqual(bytes(expected, encoding="utf-8"), rv.data)
+        self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
