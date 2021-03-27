@@ -4,6 +4,7 @@ Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach 
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
   # Status aplikacji
+Aplikacja monitorowana z wykorzystaniem StatusCake
   [![App Status](https://app.statuscake.com/button/index.php?Track=5902157&Days=1&Design=2)](https://app.statuscake.com/UptimeStatus.php?tid=5902157)
 
 - W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
@@ -62,7 +63,7 @@ m
   $ source .venv/bin/activate
   ```
 
-  == INTEGRACJA Z TRAVIS CI
+  # == INTEGRACJA Z TRAVIS CI==
 
 - Integracja z TravisCI:
 
