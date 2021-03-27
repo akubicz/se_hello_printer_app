@@ -5,6 +5,7 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
   # Status aplikacji
 Aplikacja monitorowana z wykorzystaniem StatusCake
+
   [![App Status](https://app.statuscake.com/button/index.php?Track=5902157&Days=1&Design=2)](https://app.statuscake.com/UptimeStatus.php?tid=5902157)
 
 - W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
