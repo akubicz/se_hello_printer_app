@@ -1,7 +1,9 @@
 import unittest
+import json
 from hello_world import app
 from hello_world.formater import SUPPORTED
-
+import xml.etree.ElementTree as ET_data
+import xml.etree.ElementTree as ET_expected
 
 class FlaskrTestCase(unittest.TestCase):
     def setUp(self):
@@ -15,14 +17,16 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_msg_with_output(self):
         rv = self.app.get("/?output=json")
-        self.assertEqual(b'{ "imie":"Anna", "msg":"Hello World!"}', rv.data)
+        test_value = json.dumps({ "imie":"Anna", "msg":"Hello World!"})
+        self.assertEqual(bytes(test_value.encode("utf-8")), rv.data)
 
     def test_xml_with_output(self):
         rv = self.app.get("/?output=xml")
         expected = "<greetings><name>Anna</name>" "<msg>Hello World!"
         expected += "</msg></greetings>"
-
-        self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
+        root = ET_data.fromstring(rv.data)
+        root2 = ET_expected.fromstring(expected)
+        self.assertEqual(ET_expected, ET_data)
 
     def test_name_xml_with_output(self):
         rv = self.app.get("/?name=apolonia&output=xml")
@@ -32,5 +36,5 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_name_json_with_output(self):
         rv = self.app.get("/?name=apolonia&output=json")
-        expected = '{ "imie":"apolonia", "msg":"Hello World!"}'
+        expected = '{"imie": "apolonia", "msg": "Hello World!"}'
         self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
