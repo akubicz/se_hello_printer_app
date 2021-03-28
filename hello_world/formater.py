@@ -31,7 +31,8 @@ def format_to_json(msg, imie):
 
 
 def format_to_XML(msg, imie):
-    result = "<greetings><name>" + imie + "</name><msg>" + msg + "</msg></greetings>"
+    result = "<greetings><name>" + imie + "</name><msg>" + msg
+    result += "</msg></greetings>"
     return result
 
 

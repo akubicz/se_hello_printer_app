@@ -5,6 +5,7 @@ from hello_world.formater import SUPPORTED
 import xml.etree.ElementTree as ET_data
 import xml.etree.ElementTree as ET_expected
 
+
 class FlaskrTestCase(unittest.TestCase):
     def setUp(self):
         app.config["TESTING"] = True
@@ -17,15 +18,15 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_msg_with_output(self):
         rv = self.app.get("/?output=json")
-        test_value = json.dumps({ "imie":"Anna", "msg":"Hello World!"})
+        test_value = json.dumps({"imie": "Anna", "msg": "Hello World!"})
         self.assertEqual(bytes(test_value.encode("utf-8")), rv.data)
 
     def test_xml_with_output(self):
         rv = self.app.get("/?output=xml")
         expected = "<greetings><name>Anna</name>" "<msg>Hello World!"
         expected += "</msg></greetings>"
-        root = ET_data.fromstring(rv.data)
-        root2 = ET_expected.fromstring(expected)
+        ET_data.fromstring(rv.data)
+        ET_expected.fromstring(expected)
         self.assertEqual(ET_expected, ET_data)
 
     def test_name_xml_with_output(self):
