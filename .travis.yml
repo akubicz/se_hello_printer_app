@@ -9,6 +9,8 @@ before_script:
   - wget http://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
   - export CHROME_BIN=chromium-browser
+addons:
+  chrome: stable
 script:
   - make lint
   - make test
