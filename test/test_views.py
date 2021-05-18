@@ -16,26 +16,38 @@ class FlaskrTestCase(unittest.TestCase):
         s = str(rv.data)
         ",".join(SUPPORTED) in s
 
-    def test_msg_with_output(self):
+    def test_json_with_output(self):
         rv = self.app.get("/?output=json")
         test_value = json.dumps({"imie": "Anna", "msg": "Hello World!"})
         self.assertEqual(bytes(test_value.encode("utf-8")), rv.data)
 
     def test_xml_with_output(self):
         rv = self.app.get("/?output=xml")
-        expected = "<greetings><name>Anna</name>" "<msg>Hello World!"
-        expected += "</msg></greetings>"
-        ET_data.fromstring(rv.data)
-        ET_expected.fromstring(expected)
-        self.assertEqual(ET_expected, ET_data)
+        greetings = ET_expected.Element("greetings")
+        expected_name = ET_expected.SubElement(greetings, "name")
+        expected_msg = ET_expected.SubElement(greetings, "msg")
+        expected_name.text = "Anna"
+        expected_msg.text = "Hello World!"
+        actual = ET_data.fromstring(rv.data)
+        actual_name = actual.find("name")
+        actual_msg = actual.find("msg")
+        self.assertEqual(expected_msg.text, actual_msg.text)
+        self.assertEqual(expected_name.text, actual_name.text)
 
-    def test_name_xml_with_output(self):
+    def test_specific_name_xml_with_output(self):
         rv = self.app.get("/?name=apolonia&output=xml")
-        expected = "<greetings><name>apolonia</name>"
-        expected += "<msg>Hello World!</msg></greetings>"
-        self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
+        greetings = ET_expected.Element("greetings")
+        expected_name = ET_expected.SubElement(greetings, "name")
+        expected_msg = ET_expected.SubElement(greetings, "msg")
+        expected_name.text = "Apolonia"
+        expected_msg.text = "Hello World!"
+        actual = ET_data.fromstring(rv.data)
+        actual_name = actual.find("name")
+        actual_msg = actual.find("msg")
+        self.assertEqual(expected_msg.text, actual_msg.text)
+        self.assertEqual(expected_name.text, actual_name.text)
 
-    def test_name_json_with_output(self):
+    def test_specific_name_json_with_output(self):
         rv = self.app.get("/?name=apolonia&output=json")
-        expected = '{"imie": "apolonia", "msg": "Hello World!"}'
+        expected = '{"imie": "Apolonia", "msg": "Hello World!"}'
         self.assertEqual(bytes(expected.encode("utf-8")), rv.data)
