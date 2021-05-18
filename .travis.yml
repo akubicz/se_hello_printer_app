@@ -10,7 +10,9 @@ before_script:
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
   - export CHROME_BIN=chromium-browser
 addons:
-  chrome: stable
+  apt:
+    packages:
+      - google-chrome-stable
 script:
   - make lint
   - make test
