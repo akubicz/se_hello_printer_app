@@ -4,4 +4,3 @@ flake8
 pytest-cov
 selenium
 flask_testing
-urllib.request
