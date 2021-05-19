@@ -50,5 +50,4 @@ docker_push: docker_build
 docker_gitlab_push:
 	docker login -u $(CI_DEPLOY_USER) -p $(CI_DEPLOY_PASSWORD) $(CI_REGISTRY)
 	docker build -t registry.gitlab.com/akubicz/se_hello_printer_app .
-	docker tag hello-world-printer $(TAG):$(TAG_VERSION)
 	docker push registry.gitlab.com/akubicz/se_hello_printer_app
