@@ -37,7 +37,7 @@ docker_run: docker_build
 
 USERNAME=aniatest1
 TAG=$(USERNAME)/hello-world-printer
-TAG_VERSION=0.1.0
+TAG_VERSION=1.0.0
 
 docker_push: docker_build
 	#if [ -z "${TRAVIS_TAG}" ]; then
@@ -46,3 +46,9 @@ docker_push: docker_build
 	docker push $(TAG):$(TAG_VERSION); \
 	docker logout;
 	#fi;
+
+docker_gitlab_push:
+	docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+	docker build -t registry.gitlab.com/akubicz/se_hello_printer_app .
+	docker tag hello-world-printer $(TAG):$(TAG_VERSION)
+	docker push registry.gitlab.com/akubicz/se_hello_printer_app
