@@ -6,10 +6,14 @@ test:
   stage: test
   script:
   - make deps
-  - wget -q -O — https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-  - echo ‘deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main’ | tee /etc/apt/sources.list.d/google-chrome.list
-  - apt-get update
-  - apt-get install google-chrome-stable -y
+  - apt-get install -y xvfb
+  - apt-get install -y zip
+  - apt-get install -y wget
+  - apt-get install -y ca-certificates
+  - apt-get install -y libnss3-dev libasound2 libxss1 libappindicator3-1 libindicator7 gconf-service libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation libgbm1
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - dpkg -i google-chrome*.deb
+  - rm google-chrome*.deb
   - wget http://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.6/bin/
   - export CHROME_BIN=chromium-browser
