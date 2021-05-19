@@ -6,6 +6,7 @@ test:
   stage: test
   script:
   - make deps
+  - apt-get update
   - apt-get install -y xvfb
   - apt-get install -y zip
   - apt-get install -y wget
