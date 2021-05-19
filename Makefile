@@ -7,6 +7,9 @@ deps:
 test:
 	PYTHONPATH=. py.test --verbose -s
 
+test_without_selenium:
+	PYTHONPATH=. py.test --verbose -s --ignore=test/test_selenium.py
+
 lint:
 	flake8 hello_world test
 
