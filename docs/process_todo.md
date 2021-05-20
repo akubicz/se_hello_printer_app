@@ -1,4 +1,4 @@
-W trakcie procesu rozwoju oprogramowania można wykorzystać różne testy.
+W trakcie procesu rozwoju oprogramowania można wykorzystać różne typy testów.
 
 ## testy jednostkowe
 

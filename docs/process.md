@@ -37,7 +37,8 @@ W pliku przewidziano następujące komenday dla make:
 *	docker_run – uruchomienie dockera
 *	docker_push – push obrazu dockera do DockerHub
 *	docker_gitlab_push – push obrazu dockera do registry.gitlab.com
-*	test_without_selenium – wykonaj testy z pominięciem testu ui z wykorzystaniem Google Chrome i Selenium; test Selenium dla prostego pliku html serwowanego przez flask realizowany jest zaimplementowany w pliku sterującym travis-ci, w gitlab-ci realizowane są testy bez Selenium
+*	test_without_selenium – wykonaj testy z pominięciem testu ui z wykorzystaniem Google Chrome i Selenium.  
+Test Selenium dla prostego pliku html serwowanego przez flask realizowany jest zaimplementowany w pliku sterującym travis-ci, w gitlab-ci realizowane są testy bez Selenium
 
 ## Continuous Integration z TravisCI
 
@@ -106,4 +107,4 @@ W trakcie rozwoju aplikacji przewidziano dodatkową ścieżkę CI/CD z wykorzyst
 *	dodaj do pliku tworzenie dockera
 *	dodaj deployment docker image do repozytorium repository.gitlab.com
 
-![Process](/process.png)
+![Process](process.png)
